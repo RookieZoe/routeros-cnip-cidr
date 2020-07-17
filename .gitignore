@@ -1,0 +1,30 @@
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+selenium-debug.log
+chromedriver.log
+geckodriver.log
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+tmp
+.tmp
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+./.devcontainer/
+./core
+*.sublime-project
+*.sublime-workspace

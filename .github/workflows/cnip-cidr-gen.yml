@@ -18,7 +18,7 @@ jobs:
       - name: Update cn_ip_cidr.rsc
         env:
           DEBIAN_FRONTEND: noninteractive
-        run: |
+        run: |-
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android /usr/lib/jvm /opt/ghc
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
           sudo -E apt-get -qq update
