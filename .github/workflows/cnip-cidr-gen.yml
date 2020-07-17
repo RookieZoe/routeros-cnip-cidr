@@ -1,0 +1,35 @@
+name: Build README
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *'
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: ${{ github.workspace }}/routeros-cnip-cidr
+
+    - name: Update cn_ip_cidr.rsc
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo -E apt-get -qq update
+          sudo -E apt-get -y upgrade
+          bash $GITHUB_WORKSPACE/routeros-cnip-cidr/generator.bash
+
+    - name: Commit and push if changed
+      run: |-
+        git diff
+        git config --global user.email "generator-bot@rookiezoe.com"
+        git config --global user.name "generator-bot"
+        git add -A
+        git commit -m "Update 'cn_ip_cidr.rsc'" || exit 0
+        git push
