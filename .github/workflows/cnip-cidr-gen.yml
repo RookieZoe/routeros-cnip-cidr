@@ -3,8 +3,7 @@ name: Build cn_ip_cidr.rsc
 on:
   schedule:
     - cron: '0 0 * * *'
-  push:
-    branches: master
+
 jobs:
   build:
     runs-on: ubuntu-latest
