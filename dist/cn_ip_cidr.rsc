@@ -8611,7 +8611,7 @@
 :do {add address=2001:df1:f580::/48 list=cn_ip_cidr} on-error={}
 :do {add address=2001:df1:fd80::/48 list=cn_ip_cidr} on-error={}
 :do {add address=2001:df2:80::/48 list=cn_ip_cidr} on-error={}
-:do {add address=2001:df2:180::/47 list=cn_ip_cidr} on-error={}
+:do {add address=2001:df2:180::/48 list=cn_ip_cidr} on-error={}
 :do {add address=2001:df2:5200::/48 list=cn_ip_cidr} on-error={}
 :do {add address=2001:df2:5780::/48 list=cn_ip_cidr} on-error={}
 :do {add address=2001:df2:5a80::/48 list=cn_ip_cidr} on-error={}
