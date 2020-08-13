@@ -10150,6 +10150,7 @@
 :do {add address=2406:5580::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:5680::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:5780::/32 list=cn_ip_cidr} on-error={}
+:do {add address=2406:5840::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:5880::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:5980::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:5d80::/32 list=cn_ip_cidr} on-error={}
