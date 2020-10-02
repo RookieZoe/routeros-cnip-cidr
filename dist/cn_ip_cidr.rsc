@@ -9212,7 +9212,6 @@
 :do {add address=2402:6a00::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2402:6b40::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2402:6bc0::/32 list=cn_ip_cidr} on-error={}
-:do {add address=2402:6dc0::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2402:6e00::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2402:6e80::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2402:6ec0::/32 list=cn_ip_cidr} on-error={}
