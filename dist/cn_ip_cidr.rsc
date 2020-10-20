@@ -10243,6 +10243,7 @@
 :do {add address=2406:96c0::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:9780::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:9d80::/32 list=cn_ip_cidr} on-error={}
+:do {add address=2406:9e40::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:9e80::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:9f80::/32 list=cn_ip_cidr} on-error={}
 :do {add address=2406:a080::/32 list=cn_ip_cidr} on-error={}
