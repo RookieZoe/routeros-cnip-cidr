@@ -10463,6 +10463,7 @@
 :do {add address=2409:2000::/21 list=cn_ip_cidr} on-error={}
 :do {add address=2409:6000::/20 list=cn_ip_cidr} on-error={}
 :do {add address=2409:8000::/20 list=cn_ip_cidr} on-error={}
+:do {add address=240a:2000::/24 list=cn_ip_cidr} on-error={}
 :do {add address=240a:4000::/21 list=cn_ip_cidr} on-error={}
 :do {add address=240a:8000::/21 list=cn_ip_cidr} on-error={}
 :do {add address=240a:c000::/20 list=cn_ip_cidr} on-error={}
