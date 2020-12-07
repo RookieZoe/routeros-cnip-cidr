@@ -2,7 +2,7 @@ name: Build cn_ip_cidr.rsc
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 1 * *'
 
 jobs:
   build:
