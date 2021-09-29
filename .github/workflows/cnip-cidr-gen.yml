@@ -1,8 +1,8 @@
-name: Build cn_ip_cidr.rsc
+name: cnip-cidr-gen
 
 on:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '5 0 1 * *'
 
 jobs:
   build:
