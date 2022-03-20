@@ -1,0 +1,77 @@
+name: del runs and releases
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+    inputs:
+      retain_days:
+        description: 'Number of days:'
+        required: true
+        default: 0
+
+jobs:
+  del_runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete outdate workflow runs
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            let retain_days = ${{ github.event.inputs.retain_days || 0 }};
+            const notafter = new Date().getTime() - retain_days * 24 * 60 * 60 * 1000;
+            console.log('>>>>>> Listing workflow_runs');
+            github.rest.actions
+              .listWorkflowRunsForRepo({ owner, repo })
+              .then(({ data }) => {
+                console.log('>>>>>> Done, now delete workflow_runs...');
+                (data.workflow_runs || [])
+                  .filter(({ name, status, created_at }) => {
+                    return status === 'completed' && new Date(created_at).getTime() < notafter;
+                  })
+                  .forEach(({ id }) => {
+                    console.log('>>>>>> Deleting workflow_runs:', id);
+                    github.rest.actions
+                      .deleteWorkflowRun({ owner, repo, run_id: id })
+                      .then(() => {
+                        console.log('>>>>>> Done');
+                      })
+                      .catch(e => {
+                        console.log('>>>>>> Get error when deleting workflow_runs:', e);
+                      });
+                  });
+              })
+              .catch(e => {
+                console.log('>>>>>> Get error when listing workflow_runs:', e);
+              });
+
+      - name: Delete outdate releases
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            let retain_days = ${{ github.event.inputs.retain_days || 0 }};
+            const notafter = new Date().getTime() - retain_days * 24 * 60 * 60 * 1000;
+            console.log('>>>>>> Listing releases');
+            github.rest.repos
+              .listReleases({ owner, repo })
+              .then(({ data }) => {
+                console.log('>>>>>> Done, now delete releases...');
+                (data || [])
+                  .filter(({ name, tag_name, published_at }) => {
+                    return new Date(published_at).getTime() < notafter;
+                  })
+                  .forEach(({ id }) => {
+                    github.rest.repos
+                      .deleteRelease({ owner, repo, release_id: id })
+                      .then(() => {
+                        console.log('>>>>>> Done');
+                      })
+                      .catch(e => {
+                        console.log('>>>>>> Get error when deleting releases:', e);
+                      });
+                  });
+              })
+              .catch(e => {
+                console.log('>>>>>> Get error when listing releases:', e);
+              });
